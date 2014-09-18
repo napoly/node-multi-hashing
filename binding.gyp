@@ -4,6 +4,9 @@
             "target_name": "multihashing",
             "sources": [
                 "multihashing.cc",
+                "yescrypt/sha256_Y.c",
+                "yescrypt/yescrypt-best.c",
+                "yescrypt/yescryptcommon.c",
                 "bcrypt.c",
                 "blake.c",
                 "boolberry.cc",
