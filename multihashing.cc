@@ -174,8 +174,6 @@ DECLARE_FUNC(neoscrypt) {
    char * input = Buffer::Data(target);
    char output[32];
 
-   uint32_t input_len = Buffer::Length(target);
-
    neoscrypt(input, output, 0);
 
    SET_BUFFER_RETURN(output, 32);
@@ -185,17 +183,15 @@ DECLARE_FUNC(yescrypt) {
    DECLARE_SCOPE;
 
     if (args.Length() < 1)
-        return except("You must provide one argument.");
+        RETURN_EXCEPT("You must provide one argument.");
 
    Local<Object> target = args[0]->ToObject();
 
    if(!Buffer::HasInstance(target))
-       return except("Argument should be a buffer object.");
+       RETURN_EXCEPT("Argument should be a buffer object.");
 
    char * input = Buffer::Data(target);
    char output[32];
-
-    uint32_t input_len = Buffer::Length(target);
 
    yescrypt_hash(input, output);
 
